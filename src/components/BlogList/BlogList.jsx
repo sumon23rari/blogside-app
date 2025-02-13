@@ -1,9 +1,28 @@
 import { blog_data } from '@/assets/assets';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BlogsItem from '../shared/BlogItem/BlogsItem';
+import axios from 'axios';
 
 const BlogList = () => {
     const [menu,setMenu]=useState('All');
+    const [blogs,setBlogs]=useState([]);
+
+    const fetchBlog = async () => {
+        try {
+            const response = await axios.get('/api/blog');
+            const blogData=response?.data?.blogs;
+            setBlogs(blogData);
+            console.log(response?.data?.blogs);
+        } catch (error) {
+            console.error("Error fetching blogs:", error);
+        }
+    };
+
+   useEffect(()=>{
+    fetchBlog()
+    console.log(blogs,'blogs useEffect')
+   },[])
+   console.log(blogs,'blogs')
     
     return (
         <div>
@@ -15,8 +34,11 @@ const BlogList = () => {
         
             </div>
             <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24'>
+                {/* {
+                    blogs?.filter((item)=>menu==="All"?true:item.category===menu)?.map((blog)=><BlogsItem blog={blog} key={item._id}></BlogsItem>)
+                } */}
                 {
-                    blog_data.filter((item)=>menu==="All"?true:item.category===menu).map((blog,index)=><BlogsItem blog={blog} key={index}></BlogsItem>)
+                    blogs?.filter((item)=>menu==="All"?true:item.category===menu)?.map((blog)=><BlogsItem key={blog._id} blog={blog}></BlogsItem>)
                 }
             </div>
         </div>
