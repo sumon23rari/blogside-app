@@ -1,25 +1,32 @@
 "use client"
 import { assets, blog_data } from '@/assets/assets';
+import axios from 'axios';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 const page = ({params}) => {
     const { id } = React.use(params); 
     const [data,setData]=useState(null)
-    const fetchData=()=>{
-        for (let i = 0; i < blog_data.length; i++) {
-            if (Number(id)===blog_data[i].id) {
-                setData(blog_data[i])
-                console.log(blog_data[i])
-                break;
-            }
-            
+    const fetchData=async()=>{
+        try{
+            const response=await axios.get('/api/blog',{
+                params:{
+                   id
+                }
+            })
+            setData(response?.data?.blog)
+        }
+        catch{
+            console.log('ddsf')
         }
     }
     useEffect(()=>{
         fetchData()
     },[])
+    console.log(data,'dads')
  const imageUrl=data?.author_img;
+ const imageUrl2=data?.image;
+ console.log(imageUrl,imageUrl2)
     return (
         <div className='bg-gray-200 px-5 py-5 md:px-12 lg:px-28'>
           
@@ -29,7 +36,7 @@ const page = ({params}) => {
         <p className='mt-1 pb-2 text-lg  max-w-[740px] mx-auto'>{data?.author}</p>
         </div> 
         <div className='mx-5 max-w-[800px] md:mx-auto mt-[-100px] mb-10'>
-            <Image className='border-4 border-white' src={data?.image} width={1280} height={720} alt=''/>
+           {imageUrl2 && <Image className='border-4 border-white' src={imageUrl2} width={1280} height={720} alt=''/>}
             <h1 className='my-8 text-[26px] font-semibold'>Introduction</h1>
             <p>{data?.description}</p>
             <h3 className='my-5 text-[18px] font-semibold'>step-1:self reflaction and Goal Settings</h3>

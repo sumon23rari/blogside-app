@@ -9,6 +9,11 @@ const LoadDB=async()=>{
 LoadDB();
 // api enpint for get blogs
 export async function GET(request) {
+    const blogId=request.nextUrl.searchParams.get("id");
+    if (blogId) {
+        const blog=await BlogModal.findById(blogId);
+        return NextResponse.json({blog})
+    } 
     const blogs =await BlogModal.find({});
     return NextResponse.json({blogs})
 };
