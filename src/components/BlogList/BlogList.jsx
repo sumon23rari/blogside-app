@@ -34,9 +34,7 @@ const BlogList = () => {
         
             </div>
             <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24'>
-                {/* {
-                    blogs?.filter((item)=>menu==="All"?true:item.category===menu)?.map((blog)=><BlogsItem blog={blog} key={item._id}></BlogsItem>)
-                } */}
+            
                 {
                     blogs?.filter((item)=>menu==="All"?true:item.category===menu)?.map((blog)=><BlogsItem key={blog._id} blog={blog}></BlogsItem>)
                 }

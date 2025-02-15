@@ -40,3 +40,17 @@ export async function POST(request){
     await BlogModal.create(blogData);
     return NextResponse.json({sucess:true,msg:'blog added'})
 }
+
+// creating api endpoint to delete blog
+export async function DELETE(request){
+    try {
+        const id=request.nextUrl.searchParams.get("id");
+        
+        const blog=await BlogModal.findById(id);
+        // fs.unlink(`./public${blog.image}`,()=>{});
+        await BlogModal.findByIdAndDelete(id);
+        return NextResponse.json({msg:'particular blog deleted'})
+    } catch (error) {
+        console.log(error,'eroroDelete api')
+    }
+}
