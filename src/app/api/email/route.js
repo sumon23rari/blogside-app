@@ -18,3 +18,17 @@ export async function GET(request){
     const emails=await EmailModel.find({})
     return NextResponse.json({emails})
 }
+export async function DELETE(request){
+    try {
+        const id=request.nextUrl.searchParams.get("id");
+        if (id) {
+            await EmailModel.findByIdAndDelete(id)
+        return NextResponse.json({success:true,msg:'email deleted'})   
+        } else {
+            return NextResponse.json({msg:'email id not found'})   
+        }
+     
+    } catch (error) {
+        NextResponse.json({error:error})
+    }
+}

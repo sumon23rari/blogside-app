@@ -26,7 +26,7 @@ const page = ({params}) => {
     console.log(data,'dads')
  const imageUrl=data?.author_img;
  const imageUrl2=data?.image;
- console.log(imageUrl,imageUrl2)
+
     return (
         <div className='bg-gray-200 px-5 py-5 md:px-12 lg:px-28'>
           
@@ -38,7 +38,7 @@ const page = ({params}) => {
         <div className='mx-5 max-w-[800px] md:mx-auto mt-[-100px] mb-10'>
            {imageUrl2 && <Image className='border-4 border-white' src={imageUrl2} width={1280} height={720} alt=''/>}
             <h1 className='my-8 text-[26px] font-semibold'>Introduction</h1>
-            <p>{data?.description}</p>
+            <p cl>{data?.description}</p>
             <h3 className='my-5 text-[18px] font-semibold'>step-1:self reflaction and Goal Settings</h3>
             <p className='my-3'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum eos sapiente inventore vero veritatis voluptates.</p>
             <h3 className='my-5 text-[18px] font-semibold'>step-1:self reflaction and Goal Settings</h3>

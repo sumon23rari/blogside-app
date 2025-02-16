@@ -2,6 +2,7 @@
 import SubstableItem from '@/components/AdminComponents/SubstableItem';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const page = () => {
     const [emails,setEmails]=useState([])
@@ -13,6 +14,23 @@ const page = () => {
         } catch (error) {
             console.log(error,'emailsgetError')
         }
+    };
+    const deleteSubscription=async(mongoId)=>{
+        console.log(mongoId,'mongoId')
+        try {
+            const response=await axios.delete('/api/email',{
+                params:{
+                    id:mongoId
+                }
+            })
+            toast.success(response?.data?.msg)
+            getEmails();
+            console.log(response,'response data deleteSubscri')
+        } catch (error) {
+            console.log(error,'error')
+            toast.error(error?.message)
+        }
+       
     }
     useEffect(()=>{
         getEmails()
@@ -32,7 +50,7 @@ const page = () => {
                             </thead>
                             <tbody>
                             {
-                                emails.map((email,index)=><SubstableItem email={email} index={index} key={index}></SubstableItem>)
+                                emails.map((email,index)=><SubstableItem email={email} index={index} deleteSubscription={deleteSubscription} key={index}></SubstableItem>)
                             }
                             </tbody>
                             </table>

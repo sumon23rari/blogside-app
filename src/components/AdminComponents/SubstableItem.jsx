@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SubstableItem = ({email,index}) => {
+const SubstableItem = ({email,index,deleteSubscription}) => {
     const date=new Date(email?.date)
     return (
         <tr className='bg-white border-b text-center'>
@@ -9,7 +9,7 @@ const SubstableItem = ({email,index}) => {
               </th>
               <td className=''>{email?.email}</td>
               <td className=''>{date?.toDateString()}</td>
-              <td className='cursor-pointer'>X</td>
+              <td className='cursor-pointer' onClick={()=>deleteSubscription(email._id)}>X</td>
         </tr>
     );
 };
