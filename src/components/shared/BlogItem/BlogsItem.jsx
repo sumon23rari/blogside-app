@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const BlogsItem = ({blog}) => {
-  console.log(blog,'bddddddddd')
+
     const {title,description,image,category,_id}=blog;
     const imageUrl = image;
     return (

@@ -42,7 +42,7 @@ const page = () => {
     }
     return (
         <>
-         <form className='pt-5 px-5 sm:pt-12 sm:pl-16' onSubmit={handleSubmithandler}>
+         <form className=' pt-5 px-5 sm:pt-12 sm:pl-16' onSubmit={handleSubmithandler}>
             <p className='text-xl'>Upload thumbail</p>
             <label htmlFor='image'>
                 <Image src={!image?assets.upload_area:URL.createObjectURL(image)||null} width={140} height={70} alt='image'/>

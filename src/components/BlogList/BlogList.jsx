@@ -12,7 +12,7 @@ const BlogList = () => {
             const response = await axios.get('/api/blog');
             const blogData=response?.data?.blogs;
             setBlogs(blogData);
-            console.log(response?.data?.blogs);
+            
         } catch (error) {
             console.error("Error fetching blogs:", error);
         }
@@ -20,9 +20,9 @@ const BlogList = () => {
 
    useEffect(()=>{
     fetchBlog()
-    console.log(blogs,'blogs useEffect')
+  
    },[])
-   console.log(blogs,'blogs')
+ 
     
     return (
         <div>

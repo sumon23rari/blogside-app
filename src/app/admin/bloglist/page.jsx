@@ -33,7 +33,7 @@ const page = () => {
         fetchData ()
     });
     return (
-        <div className=' pt-5 px-5 sm:pt-12 sm:pl-16'>
+        <div className='flex-1 pt-5 px-5 sm:pt-12 sm:pl-16'>
             <h1 className=' uppercase  font-medium '>All blogs</h1>
             <div className='relative h-[80vh]  max-w-[850px] overflow-x-auto mt-4 border border-gray-400  '>
                 <table className='w-full text-sm text-gray-500 '>
