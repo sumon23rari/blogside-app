@@ -32,13 +32,14 @@ const page = ({params}) => {
           
      <div className='text-center my-24'>
         <h1 className='text-2xl sm:text-5xl font-semibold max-w-[700px] mx-auto'>{data?.title}</h1>
-        {imageUrl && <Image className='mx-auto mt-6 border border-white rounded-full' src={imageUrl} width={60} height={60} alt=''/>}
+        {imageUrl && <Image className='mx-auto mt-6 border border-white rounded-full' src={imageUrl} 
+        width={60} height={60} alt=''/>}
         <p className='mt-1 pb-2 text-lg  max-w-[740px] mx-auto'>{data?.author}</p>
         </div> 
         <div className='mx-5 max-w-[800px] md:mx-auto mt-[-100px] mb-10'>
            {imageUrl2 && <Image className='border-4 border-white' src={imageUrl2} width={1280} height={720} alt=''/>}
             <h1 className='my-8 text-[26px] font-semibold'>Introduction</h1>
-            <p cl>{data?.description}</p>
+            <p >{data?.description}</p>
             <h3 className='my-5 text-[18px] font-semibold'>step-1:self reflaction and Goal Settings</h3>
             <p className='my-3'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum eos sapiente inventore vero veritatis voluptates.</p>
             <h3 className='my-5 text-[18px] font-semibold'>step-1:self reflaction and Goal Settings</h3>
